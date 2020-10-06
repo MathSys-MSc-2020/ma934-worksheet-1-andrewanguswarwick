@@ -4,6 +4,7 @@ using Plots
 
 # List of functions to be exported
 export example_plot
+export new_plot
 
 # Definitions of any new types provided
 
@@ -13,6 +14,11 @@ export example_plot
 
 This function evaluates Sin(x) at n points in the interval [0, 2π], creates a
     plot and then returns the plot.
+
+    new_plot(alpha,n)
+
+This function evaluates x^alpha.log(x) at n points with values of x = {2^y:0 < y <= n} and returns a log plot.
+
 """
 function example_plot(n)
     title = "This is an example plot."
@@ -29,5 +35,19 @@ function example_plot(n)
     plot!(x2, y2, label="Underlying function.", color="green", linewidth=2)
     return p
 end
+function new_plot(alpha,n)
+    
+    title = "Log plot of new function."
+    x = collect(2 .^ (1:n))
+    
+    y = x.^alpha.*log.(x)
+
+    # Plot the new function
+    g = plot(x,y,title=title,markersize=10,
+        linewidth=2,xaxis=:log,yaxis=:log,label="f(x)")
+    
+    return g
+end
+
 # End the module definition
 end

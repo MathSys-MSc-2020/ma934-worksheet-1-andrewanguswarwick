@@ -28,3 +28,7 @@ p = example_plot(n)
 
 # Save the plot as a pdf file
 savefig(p, "testplot.pdf")
+        
+# Load in alpha and plot new function
+alpha = args["group2"]["parameter3"]
+g = new_plot(alpha,n)
